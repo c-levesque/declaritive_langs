@@ -10,9 +10,10 @@ namespace CL_GradesTracker_ProjectOne
         public int marks_earned { get; set; }
         public int out_of { get; set; }
         public int percent { get; set; }
-
         public Evaluation[] evaluations { get; set; }
 
+
+     
 
     }
 }
