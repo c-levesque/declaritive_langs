@@ -6,10 +6,10 @@ namespace CL_GradesTracker_ProjectOne
 {
     class Evaluation
     {
-        private string description { get; set; }
-        private double weight { get; set; }
-        private int out_of { get; set; }
-        private double earned_marks { get; set; }
+        public string description { get; set; }
+        public double weight { get; set; }
+        public int out_of { get; set; }
+        public double earned_marks { get; set; }
 
 
     }

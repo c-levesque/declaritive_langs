@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 
 namespace CL_GradesTracker_ProjectOne
 {
@@ -6,56 +8,31 @@ namespace CL_GradesTracker_ProjectOne
     {
         static void Main(string[] args)
         {
+            const int DASHES = 74;
+            bool is_running = true;
+            List<Course> courses = new List<Course>();
+         
+            
+         
+            
+            // main display
             Console.WriteLine("\n" +
                 "\t\t\t~ GRADES TRACKING SYSTEM ~\n");
+            HelperMethods.print_box("Grades Summary", DASHES);
 
-            print_box("got it working ");
-        }
+            // create main menu
+            HelperMethods.main_menu(courses, DASHES);
 
-        static void print_box(string display)
-        {
-            int dashes = 74, display_string_length = display.Length;
-
-            print_multiple("-", dashes);
-
-            int spaces = (dashes - display_string_length) / 2;
-
-            bool is_odd = false;
-
-            _ = display_string_length % 2 == 0 ? is_odd = false : is_odd = true;
-
-            Console.WriteLine();
-            Console.Write("|");
-
-            for (int x = 0; x < spaces; x++)
-            {
-                Console.Write(" ");
-            }
-            Console.Write(display);
-            for (int x = 0; x < spaces; x++)
-            {
-                Console.Write(" ");
-            }
-            if (is_odd)
-                Console.Write(" ");
-            Console.Write("|\n");
-
-            print_multiple("-", dashes);
-
+            Console.Clear();
+            // create add new course
+            // create delete course
+            // main menu with course
+            // view course details (evaluations)
+            // update course details
 
         }
 
-        static void print_multiple(string s, int amount)
-        {
-            int x;
-            Console.Write("+");
-            for (x = 0; x < amount; x++)
-            {
-                Console.Write(s);
-            }
-            Console.Write("+");
 
-        }
     }
 
 

@@ -6,8 +6,12 @@ namespace CL_GradesTracker_ProjectOne
 {
     class Course
     {
-        private string code { get; set; }
-        private Evaluation[] evaluations { get; set; }
+        public string code { get; set; }
+        public int marks_earned { get; set; }
+        public int out_of { get; set; }
+        public int percent { get; set; }
+
+        public Evaluation[] evaluations { get; set; }
 
 
     }
