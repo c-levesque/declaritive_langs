@@ -189,7 +189,7 @@ namespace CL_GradesTracker_ProjectOne
             // if selection was a number and courses is not empty, parse user input for course evaluations 
             if (Char.IsDigit(ch) && courses.Count != 0)
             {
-
+                parse_course_selection(input, courses, dashes, top_message, selection);
             }
             else
             {
@@ -229,29 +229,40 @@ namespace CL_GradesTracker_ProjectOne
             }
         }
 
-        public static void parse_course_selection(string input, List<Course> courses, int dashes, string top_message)
+        public static void parse_course_selection(string input, List<Course> courses, int dashes, string top_message, int selection)
         {
-            switch (input)
-            {
-                case "A":
-                    Course newCourse = add_course();
-                    if (newCourse != null)
-                    {
-                        courses.Add(newCourse);
-                        Console.Clear();
-                        main_menu(courses, dashes, top_message);
-                    }
-                    else
-                    {
-                        parse_user_input(input, courses, dashes, top_message);
-                    }
-                    break;
 
-                default:
-                    Console.Write("incorrect selection made, please select an option above: ");
-                    string new_input = Console.ReadLine();
-                    parse_user_input(new_input.ToUpper(), courses, dashes, top_message); break;
+            char ch = input[0];
+
+            if(Char.IsDigit(ch))
+            {
+
             }
+            else
+            {
+                switch (input)
+                {
+                    case "A":
+                        Evaluation new_evaluation = add_evaluation();
+                        if (new_evaluation != null)
+                        {
+                            courses[selection].evaluations.Add(new_evaluation);
+                            Console.Clear();
+                            main_course_menu(courses, dashes, top_message, selection);
+                        }
+                        else
+                        {
+                            parse_course_selection(input, courses, dashes, top_message,selection);
+                        }
+                        break;
+
+                    default:
+                        Console.Write("incorrect selection made, please select an option above: ");
+                        string new_input = Console.ReadLine();
+                        parse_course_selection(new_input.ToUpper(), courses, dashes, top_message, selection); break;
+                }
+            }
+      
         }
 
         public static Course add_course()
@@ -272,11 +283,42 @@ namespace CL_GradesTracker_ProjectOne
                 Console.WriteLine("Course code must contain 4 letters - 4 numbers ... EG 'ABCD-1234'");
                 return null;
             }
-
-
         }
 
+        public static Evaluation add_evaluation()
+        {
 
+            Evaluation new_evaluation = new Evaluation();
+
+            Console.Write("Enter a description: ");
+            string input = Console.ReadLine();
+            input.Trim();
+            new_evaluation.description = input;
+
+
+            Console.Write("\nEnter the 'out of' mark: ");
+            input = Console.ReadLine();
+            input.Trim();
+            int out_of = int.Parse(input);
+            new_evaluation.out_of = out_of;
+
+            Console.Write("\nEnter the % weight: ");
+            input = Console.ReadLine();
+            input.Trim();
+            double weight = double.Parse(input);
+            new_evaluation.weight_out_of_100 = weight;
+
+            Console.Write("\nEnter marks earned or Press ENTER to skip: ");
+            input = Console.ReadLine();
+            double marks_earned = double.Parse(input);
+            new_evaluation.earned_marks = marks_earned;
+
+            new_evaluation.percent = 100 * new_evaluation.earned_marks / new_evaluation.out_of;
+            new_evaluation.course_marks = new_evaluation.percent * new_evaluation.weight_out_of_100 / 100;
+
+            return new_evaluation;
+
+        }
 
 
         public static bool verify_course_code(string code)

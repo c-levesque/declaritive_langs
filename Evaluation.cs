@@ -10,8 +10,8 @@ namespace CL_GradesTracker_ProjectOne
         public int out_of { get; set; }
         public double earned_marks { get; set; }
         public double percent { get; set; }
-        public int course_marks { get; set; }
-        public int weight_out_of_100 { get; set; }
+        public double course_marks { get; set; }
+        public double weight_out_of_100 { get; set; }
     }
 
 
