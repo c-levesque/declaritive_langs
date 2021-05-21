@@ -154,18 +154,18 @@ namespace CL_GradesTracker_ProjectOne
 
             Course selectedCourse = courses[selection];
 
-            if (selectedCourse.evaluations == null)
+            if (selectedCourse.evaluations.Count == 0)
             {
                 Console.WriteLine("\n\nThere are currently no evaluations for " + selectedCourse.code + ".");
             }
             else
             {
                 int evaluation_count = 1;
-                Console.WriteLine("\n\n{0,3} {1,-10} {2,16} {3,10} {4,10} {5,12} {5,12}", "#.", "Evaluation", "Marks Earned", "Out Of", "Percent" , "Course Marks", "Weight/100");
+                Console.WriteLine("\n\n{0,3} {1,-10} {2,16} {3,7} {4,10} {5,13} {6,12}", "#.", "Evaluation", "Marks Earned", "Out Of", "Percent" , "Course Marks", "Weight/100");
                 Console.WriteLine("");
                 foreach (Evaluation e in selectedCourse.evaluations)
                 {
-                    Console.WriteLine("{0,3} {1,-10} {2,16} {3,10} {4,10} {5,12} {5,12}",
+                    Console.WriteLine("{0,3} {1,-10} {2,16} {3,7} {4,10} {5,13} {6,12}",
                         evaluation_count++ + ".",
                         e.description,
                         String.Format("{0:0.0}", e.earned_marks),
@@ -186,15 +186,9 @@ namespace CL_GradesTracker_ProjectOne
 
             char ch = input[0];
 
-            // if selection was a number and courses is not empty, parse user input for course evaluations 
-            if (Char.IsDigit(ch) && courses.Count != 0)
-            {
-                parse_course_selection(input, courses, dashes, top_message, selection);
-            }
-            else
-            {
-                parse_user_input(input, courses, dashes, top_message);
-            }
+
+            parse_course_selection(input, courses, dashes, top_message, selection);
+           
 
         }
         public static string get_user_input()
@@ -222,6 +216,10 @@ namespace CL_GradesTracker_ProjectOne
                     }
                     break;
 
+                case "X":
+                    System.Environment.Exit(1);
+                    break;
+
                 default:
                     Console.Write("incorrect selection made, please select an option above: ");
                     string new_input = Console.ReadLine();
@@ -231,7 +229,6 @@ namespace CL_GradesTracker_ProjectOne
 
         public static void parse_course_selection(string input, List<Course> courses, int dashes, string top_message, int selection)
         {
-
             char ch = input[0];
 
             if(Char.IsDigit(ch))
@@ -243,17 +240,17 @@ namespace CL_GradesTracker_ProjectOne
                 switch (input)
                 {
                     case "A":
-                        Evaluation new_evaluation = add_evaluation();
-                        if (new_evaluation != null)
-                        {
-                            courses[selection].evaluations.Add(new_evaluation);
-                            Console.Clear();
-                            main_course_menu(courses, dashes, top_message, selection);
-                        }
-                        else
-                        {
-                            parse_course_selection(input, courses, dashes, top_message,selection);
-                        }
+
+                        courses[selection].evaluations.Add(add_evaluation());
+                        Console.Clear();
+                        main_course_menu(courses, dashes, top_message, selection);
+                
+                        break;
+
+                    case "X":
+                        Console.Clear();
+                        top_message = "Grades Summary";
+                        main_menu(courses, dashes, top_message);
                         break;
 
                     default:
@@ -274,8 +271,7 @@ namespace CL_GradesTracker_ProjectOne
 
             if (verify_course_code(upper))
             {
-                Course newCourse = new Course();
-                newCourse.code = upper;
+                Course newCourse = new Course(upper);
                 return newCourse;
             }
             else
@@ -296,22 +292,31 @@ namespace CL_GradesTracker_ProjectOne
             new_evaluation.description = input;
 
 
-            Console.Write("\nEnter the 'out of' mark: ");
+            Console.Write("Enter the 'out of' mark: ");
             input = Console.ReadLine();
             input.Trim();
             int out_of = int.Parse(input);
             new_evaluation.out_of = out_of;
 
-            Console.Write("\nEnter the % weight: ");
+            Console.Write("Enter the % weight: ");
             input = Console.ReadLine();
             input.Trim();
             double weight = double.Parse(input);
             new_evaluation.weight_out_of_100 = weight;
 
-            Console.Write("\nEnter marks earned or Press ENTER to skip: ");
+            Console.Write("Enter marks earned or Press ENTER to skip: ");
             input = Console.ReadLine();
-            double marks_earned = double.Parse(input);
-            new_evaluation.earned_marks = marks_earned;
+
+            if(double.TryParse(input, out var parsedNumber))
+            {
+                new_evaluation.earned_marks = parsedNumber;
+            }
+            else
+            {
+                new_evaluation.earned_marks = 0.0;
+            }
+
+
 
             new_evaluation.percent = 100 * new_evaluation.earned_marks / new_evaluation.out_of;
             new_evaluation.course_marks = new_evaluation.percent * new_evaluation.weight_out_of_100 / 100;

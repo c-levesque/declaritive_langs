@@ -24,3 +24,16 @@ C:\Users\Chris\source\repos\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesT
 C:\Users\Chris\source\repos\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.dll
 C:\Users\Chris\source\repos\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.pdb
 C:\Users\Chris\source\repos\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.genruntimeconfig.cache
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.csprojAssemblyReference.cache
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.AssemblyInfoInputs.cache
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.AssemblyInfo.cs
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.csproj.CoreCompileInputs.cache
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.dll
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.pdb
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.exe
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.deps.json
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.runtimeconfig.json
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.runtimeconfig.dev.json
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.dll
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\bin\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.pdb
+C:\Users\Chris\source\repos\CL_GradesTracker_ProjectOne\declaritive_langs\obj\Debug\netcoreapp3.1\CL_GradesTracker_ProjectOne.genruntimeconfig.cache
