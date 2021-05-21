@@ -41,7 +41,7 @@ namespace CL_GradesTracker_ProjectOne
 
             HelperMethods.VerifyEvaluationMarksEarned(ref marksEarnedParsed);
 
-            return new Evaluation(description, outOfParsed, marksEarnedParsed, weight_out_of_100);
+            return new Evaluation(description, outOfParsed, marksEarnedParsed, weightParsed);
 
         }
 
