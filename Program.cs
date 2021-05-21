@@ -14,27 +14,30 @@ namespace CL_GradesTracker_ProjectOne
         {
 
             // comment out to fast track
-            add_test_data();
+            AddTestData();
 
             // create main menu
-            HelperMethods.main_menu(courses, DASHES, "Grades Summary");
-
-        
+            RunProgram();
 
         }
 
-        private static void add_test_data()
+        private static void AddTestData()
         {
             Course c = new Course("ABCD-1234");
             courses.Add(c);
 
-            Evaluation e1 = new Evaluation("proj 1", 50, 15, 46.5);
-            Evaluation e2 = new Evaluation("quiz 1", 5, 2, 4);
-            Evaluation e3 = new Evaluation("midterm t", 45, 25, 29.0);
+            Evaluation e1 = new Evaluation("proj 1", 50, 46.5, 15);
+            Evaluation e2 = new Evaluation("quiz 1", 5, 4, 2);
+            Evaluation e3 = new Evaluation("midterm t", 45, 29.0, 25);
 
-            courses[0].evaluations.Add(e1);
-            courses[0].evaluations.Add(e2);
-            courses[0].evaluations.Add(e3);
+            courses[0].Evaluations.Add(e1);
+            courses[0].Evaluations.Add(e2);
+            courses[0].Evaluations.Add(e3);
+        }
+
+        private static void RunProgram()
+        {
+            MainMenu.Display(courses, DASHES, "Grades Summary");
         }
     }
 

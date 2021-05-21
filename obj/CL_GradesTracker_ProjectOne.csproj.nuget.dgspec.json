@@ -1,27 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chris\\source\\repos\\CL_GradesTracker_ProjectOne\\declaritive_langs\\CL_GradesTracker_ProjectOne.csproj": {}
+    "C:\\Users\\Chris\\source\\repos\\declaritive_langs\\declaritivelangs\\CL_GradesTracker_ProjectOne.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Chris\\source\\repos\\CL_GradesTracker_ProjectOne\\declaritive_langs\\CL_GradesTracker_ProjectOne.csproj": {
+    "C:\\Users\\Chris\\source\\repos\\declaritive_langs\\declaritivelangs\\CL_GradesTracker_ProjectOne.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chris\\source\\repos\\CL_GradesTracker_ProjectOne\\declaritive_langs\\CL_GradesTracker_ProjectOne.csproj",
+        "projectUniqueName": "C:\\Users\\Chris\\source\\repos\\declaritive_langs\\declaritivelangs\\CL_GradesTracker_ProjectOne.csproj",
         "projectName": "CL_GradesTracker_ProjectOne",
-        "projectPath": "C:\\Users\\Chris\\source\\repos\\CL_GradesTracker_ProjectOne\\declaritive_langs\\CL_GradesTracker_ProjectOne.csproj",
+        "projectPath": "C:\\Users\\Chris\\source\\repos\\declaritive_langs\\declaritivelangs\\CL_GradesTracker_ProjectOne.csproj",
         "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chris\\source\\repos\\CL_GradesTracker_ProjectOne\\declaritive_langs\\obj\\",
+        "outputPath": "C:\\Users\\Chris\\source\\repos\\declaritive_langs\\declaritivelangs\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
           "C:\\Users\\Chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -60,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

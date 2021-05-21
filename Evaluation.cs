@@ -4,28 +4,28 @@ using System.Text;
 
 namespace CL_GradesTracker_ProjectOne
 {
-    class Evaluation
+    public class Evaluation
     {
-        public string description { get; set; }
-        public int out_of { get; set; }
-        public double earned_marks { get; set; }
-        public double percent { get; set; }
-        public double course_marks { get; set; }
-        public double weight_out_of_100 { get; set; }
+        public string Description { get; set; }
+        public int OutOf { get; set; }
+        public double MarksEarned { get; set; }
+        public double Percent { get; set; }
+        public double CourseMarks { get; set; }
+        public double Weight { get; set; }
 
         public Evaluation()
         {
 
         }
-        public Evaluation(string desc, int out_of, double earned_marks, double weight_out_of_100)
+        public Evaluation(string description, int outOf, double marksEarned, double weight)
         {
-            this.description = desc;
-            this.out_of = out_of;
-            this.earned_marks = earned_marks;
-            this.weight_out_of_100 = weight_out_of_100;
-            this.percent = 100 * this.earned_marks / this.out_of;
-            this.course_marks = this.percent * this.weight_out_of_100 / 100;
+            this.Description = description;
+            this.OutOf = outOf;
+            this.MarksEarned = marksEarned;
+            this.Weight = weight;
 
+            this.Percent = 100 * this.MarksEarned / this.OutOf;
+            this.CourseMarks = this.Percent * this.Weight / 100;
         }
     }
 

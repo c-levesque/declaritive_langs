@@ -4,21 +4,18 @@ using System.Text;
 
 namespace CL_GradesTracker_ProjectOne
 {
-    class Course
+    public class Course
     {
-        public string code { get; set; }
-        public int marks_earned { get; set; }
-        public int out_of { get; set; }
-        public int percent { get; set; }
-        public List<Evaluation> evaluations = new List<Evaluation>();
+        public string Code { get; set; }
+        public int MarksEarned { get; set; }
+        public int OutOf { get; set; }
+        public int Percent { get; set; }
+        public List<Evaluation> Evaluations = new List<Evaluation>();
 
         public Course(string code)
         {
-            this.code = code;
+            this.Code = code;
         }
-        public void add_evaluation(Evaluation e)
-        {  
-            evaluations.Add(e);
-        }
+    
     }
 }
