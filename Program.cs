@@ -6,19 +6,13 @@ namespace CL_GradesTracker_ProjectOne
 {
     class Program
     {
-
         static List<Course> courses = new List<Course>();
         const int DASHES = 74;
 
         static void Main(string[] args)
         {
-
-            // comment out to fast track
             AddTestData();
-
-            // create main menu
             RunProgram();
-
         }
 
         private static void AddTestData()
@@ -37,9 +31,7 @@ namespace CL_GradesTracker_ProjectOne
 
         private static void RunProgram()
         {
-            MainMenu.Display(courses, DASHES, "Grades Summary");
+            MainMenu.Display(ref courses, DASHES, "Grades Summary");
         }
     }
-
-
 }

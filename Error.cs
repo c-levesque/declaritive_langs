@@ -8,7 +8,7 @@ namespace CL_GradesTracker_ProjectOne
     {
         public static void PrintMessage(string msg)
         {
-            Console.WriteLine(msg);
+            Console.Write(msg);
         }
     }
 }

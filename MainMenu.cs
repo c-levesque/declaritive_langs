@@ -6,7 +6,7 @@ namespace CL_GradesTracker_ProjectOne
 {
     public static class MainMenu
     {
-        public static void Display(List<Course> courses, int dashes, string topMessage)
+        public static void Display(ref List<Course> courses, int dashes, string topMessage)
         {
             string input;
             char c = '\0';
@@ -21,22 +21,29 @@ namespace CL_GradesTracker_ProjectOne
             HelperMethods.PromptUser("Enter a command: ");
             input = HelperMethods.GetUserSelection();
 
-            ParseUserInput(c, selection, input, courses, topMessage, dashes);
+            ParseUserInput(c, selection, input, ref courses, topMessage, dashes);
         }
 
-        static void ParseUserInput(char c, int selection, string input, List<Course> courses, string topMessage, int dashes)
+        public static void ParseUserInput(char c, int selection, string input, ref List<Course> courses, string topMessage, int dashes)
         {
             GetCourseSelection(ref c, ref selection, input);
 
             if (Char.IsDigit(c) && selection >= 0)
             {
+                if(selection < 0 || selection >= courses.Count)
+                {
+                    Error.PrintMessage("Incorrect input, try again..");
+                    HelperMethods.PromptUser("Enter a command: ");
+                    input = HelperMethods.GetUserSelection();
+                    ParseUserInput(c, selection, input, ref courses, topMessage, dashes);
+                }
                 Console.Clear();
                 topMessage = courses[selection].Code;
-                CourseMenu.Display(courses, dashes, topMessage, selection);
+                CourseMenu.Display(ref courses, dashes, topMessage, selection);
             }
             else
             {
-                ParseMethods.ParseMainInput(input, courses, dashes, topMessage);
+                ParseMethods.ParseMainInput(input, ref courses, dashes, topMessage);
             }
         }
 

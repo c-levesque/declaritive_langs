@@ -42,7 +42,16 @@ namespace CL_GradesTracker_ProjectOne
             HelperMethods.VerifyEvaluationMarksEarned(ref marksEarnedParsed);
 
             return new Evaluation(description, outOfParsed, marksEarnedParsed, weightParsed);
+        }
 
+        public static void DestroyEvaluation(ref Evaluation e)
+        {
+            e = null;
+        }
+
+        public static void DestroyCourse(ref Course c)
+        {
+            c = null;
         }
 
 

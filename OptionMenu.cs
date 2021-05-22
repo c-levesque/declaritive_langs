@@ -47,5 +47,25 @@ namespace CL_GradesTracker_ProjectOne
                 Console.Write("-");
             }
         }
+
+        public static void DisplayEvaluationOptions(int dashes)
+        {
+            int i;
+
+            Console.WriteLine("");
+
+            for (i = 0; i < dashes; ++i)
+            {
+                Console.Write("-");
+            }
+            Console.WriteLine("\nPress D to delete this course.");
+            Console.WriteLine("Press E to edit this evaluation.");
+            Console.WriteLine("Press X to return to the previous menu");
+
+            for (i = 0; i < dashes; ++i)
+            {
+                Console.Write("-");
+            }
+        }
     }
 }

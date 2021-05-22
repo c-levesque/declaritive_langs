@@ -27,6 +27,8 @@ namespace CL_GradesTracker_ProjectOne
             this.Percent = 100 * this.MarksEarned / this.OutOf;
             this.CourseMarks = this.Percent * this.Weight / 100;
         }
+
+      
     }
 
     
