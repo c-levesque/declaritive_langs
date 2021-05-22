@@ -9,6 +9,7 @@ namespace CL_GradesTracker_ProjectOne
         public static Course AddCourse()
         {
             string input, inputToUpper;
+
             HelperMethods.PromptUser("Enter a course code: ");
             input = Console.ReadLine();
             input.Trim();
@@ -49,8 +50,10 @@ namespace CL_GradesTracker_ProjectOne
         public static void DeleteEvaluation(ref List<Course> courses, int courseSelection, int evaluationSelection)
         {
             string input;
+
             HelperMethods.PromptUser($"Delete { courses[courseSelection].Evaluations[evaluationSelection].Description }? (Y/N): ");
             input = HelperMethods.GetUserSelection();
+
             if (VerifyYesOrNo(input))
             {
                 if (input == "Y")
@@ -74,8 +77,10 @@ namespace CL_GradesTracker_ProjectOne
         public static void DeleteCourse(ref List<Course> courses, int courseSelection)
         {
             string input;
+
             HelperMethods.PromptUser($"Delete { courses[courseSelection].Code }? (Y/N): ");
             input = HelperMethods.GetUserSelection();
+
             if (VerifyYesOrNo(input))
             {
                 if (input == "Y")
