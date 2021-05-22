@@ -25,6 +25,8 @@ namespace CL_GradesTracker_ProjectOne
             {
                 Console.Write("-");
             }
+
+            Console.WriteLine("");
         }
 
         public static void DisplayCourseOptions(int dashes)
@@ -46,6 +48,7 @@ namespace CL_GradesTracker_ProjectOne
             {
                 Console.Write("-");
             }
+            Console.WriteLine("");
         }
 
         public static void DisplayEvaluationOptions(int dashes)
@@ -66,6 +69,7 @@ namespace CL_GradesTracker_ProjectOne
             {
                 Console.Write("-");
             }
+            Console.WriteLine("");
         }
     }
 }

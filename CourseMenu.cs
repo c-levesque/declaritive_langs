@@ -38,13 +38,13 @@ namespace CL_GradesTracker_ProjectOne
             else
             {
                 evaluation_count = 1;
-                Console.WriteLine("\n\n{0,3} {1,-10} {2,16} {3,7} {4,10} {5,13} {6,12}", "#.", "Evaluation", "Marks Earned", "Out Of", "Percent", "Course Marks", "Weight/100");
+                Console.WriteLine("\n\n{0,3} {1,-16} {2,16} {3,7} {4,10} {5,13} {6,12}", "#.", "Evaluation", "Marks Earned", "Out Of", "Percent", "Course Marks", "Weight/100");
                 Console.WriteLine("");
                 foreach (Evaluation e in courses[selection].Evaluations)
                 {
                     if(e != null)
                     {
-                        Console.WriteLine("{0,3} {1,-10} {2,16} {3,7} {4,10} {5,13} {6,12}",
+                        Console.WriteLine("{0,3} {1,-16} {2,16} {3,7} {4,10} {5,13} {6,12}",
                        evaluation_count + ".",
                        e.Description,
                        String.Format("{0:0.0}", e.MarksEarned),

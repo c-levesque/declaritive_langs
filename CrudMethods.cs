@@ -21,6 +21,7 @@ namespace CL_GradesTracker_ProjectOne
             else
             {
                 Error.PrintMessage("Course code must contain 4 letters - 4 numbers ... EG 'ABCD-1234'");
+                Console.WriteLine();
                 return null;
             }
         }
@@ -44,17 +45,76 @@ namespace CL_GradesTracker_ProjectOne
             return new Evaluation(description, outOfParsed, marksEarnedParsed, weightParsed);
         }
 
-        public static void DestroyEvaluation(ref Evaluation e)
+
+        public static void DeleteEvaluation(ref List<Course> courses, int courseSelection, int evaluationSelection)
         {
-            e = null;
+            string input;
+            HelperMethods.PromptUser($"Delete { courses[courseSelection].Evaluations[evaluationSelection].Description }? (Y/N): ");
+            input = HelperMethods.GetUserSelection();
+            if (VerifyYesOrNo(input))
+            {
+                if (input == "Y")
+                {
+                    Evaluation toBeRemoved = courses[courseSelection].Evaluations[evaluationSelection];
+                    courses[courseSelection].Evaluations.Remove(toBeRemoved);
+                    toBeRemoved = null;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                Error.PrintMessage("Incorrect input, try again...");
+                DeleteEvaluation(ref courses, courseSelection, evaluationSelection);
+            }
         }
 
-        public static void DestroyCourse(ref Course c)
+        public static void DeleteCourse(ref List<Course> courses, int courseSelection)
         {
-            c = null;
+            string input;
+            HelperMethods.PromptUser($"Delete { courses[courseSelection].Code }? (Y/N): ");
+            input = HelperMethods.GetUserSelection();
+            if (VerifyYesOrNo(input))
+            {
+                if (input == "Y")
+                {
+                    Course toBeRemoved = courses[courseSelection];
+                    courses.Remove(toBeRemoved);
+                    toBeRemoved = null;
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                Error.PrintMessage("Incorrect input, try again...");
+                Console.WriteLine();
+                DeleteCourse(ref courses, courseSelection);
+            }
         }
 
+        static bool VerifyYesOrNo(string input)
+        {
+            switch (input)
+            {
+                case "Y":
+                    return true;
+                case "N":
+                    return true;
+                default:
+                    return false;
+            }
+        }
 
+        internal static void EditEvaluation(ref List<Course> courses, int courseSelection, int evaluationSelection)
+        {
+            Evaluation editedEvaluation = AddEvaluation();
+            courses[courseSelection].Evaluations[evaluationSelection] = editedEvaluation;
+        }
     }
 
 

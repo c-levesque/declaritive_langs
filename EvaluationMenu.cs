@@ -22,20 +22,6 @@ namespace CL_GradesTracker_ProjectOne
             ParseMethods.ParseEvaluationInput(input, ref courses, dashes, topMessage, courseSelection, evaulationSelection);
         }
 
-  
-
-        static void GetEvaluationSelection(ref char c, ref int selection, string input)
-        {
-            c = input[0];
-
-            // modifies course selection (if one was made)
-            if (Char.IsDigit(c))
-            {
-                selection = int.Parse(input) - 1;
-            }
-        }
-
-
 
         static void DisplayTop(string topMessage, int dashes)
         {
@@ -61,8 +47,6 @@ namespace CL_GradesTracker_ProjectOne
                 String.Format("{0:0.0}", temp.Percent),
                 String.Format("{0:0.0}", temp.CourseMarks),
                 String.Format("{0:0.0}", temp.Weight));
-            
-           
         }
     }
 }

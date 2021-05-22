@@ -6,35 +6,55 @@ namespace CL_GradesTracker_ProjectOne
 {
     public static class ParseMethods
     {
-        public static void ParseMainInput(string input, ref List<Course> courses, int dashes, string top_message)
+        public static void ParseMainInput(string input, ref List<Course> courses, int dashes, string topMessage)
         {
-            switch (input)
+            if (int.TryParse(input, out var parsedSelection))
             {
-                case "A":
-                    Course newCourse = CrudMethods.AddCourse();
-                    if (newCourse != null)
-                    {
-                        courses.Add(newCourse);
-                        Console.Clear();
-                        MainMenu.Display(ref courses, dashes, top_message);
-                    }
-                    else
-                    {
-                        ParseMainInput(input, ref courses, dashes, top_message);
-                    }
-                    break;
-
-                case "X":
-                    System.Environment.Exit(1);
-                    break;
-
-                default:
-                    Error.PrintMessage("incorrect selection made, please select an option above: ");
+                if (parsedSelection <= 0 || parsedSelection > courses.Count)
+                {
+                    Error.PrintMessage("Incorrect input, try again..");
+                    Console.WriteLine();
                     HelperMethods.PromptUser("Enter a command: ");
-                    string new_input = Console.ReadLine();
-                    char c = new_input[0];
-                    MainMenu.ParseUserInput(c, -1, new_input, ref courses, top_message, dashes); break;
+                    input = HelperMethods.GetUserSelection();
+                    ParseMainInput(input, ref courses, dashes, "Grades Summary");
+                }
+                else
+                {
+                    Console.Clear();
+                    CourseMenu.Display(ref courses, dashes, courses[--parsedSelection].Code, parsedSelection);
+                }
             }
+            else
+            {
+                switch (input)
+                {
+                    case "A":
+                        Course newCourse = CrudMethods.AddCourse();
+                        if (newCourse != null)
+                        {
+                            courses.Add(newCourse);
+                            Console.Clear();
+                            MainMenu.Display(ref courses, dashes, topMessage);
+                        }
+                        else
+                        {
+                            ParseMainInput(input, ref courses, dashes, topMessage);
+                        }
+                        break;
+
+                    case "X":
+                        System.Environment.Exit(1);
+                        break;
+
+                    default:
+                        Error.PrintMessage("Incorrect input, try again..");
+                        Console.WriteLine();
+                        HelperMethods.PromptUser("Enter a command: ");
+                        string new_input = HelperMethods.GetUserSelection();
+                        ParseMainInput(new_input, ref courses, dashes, topMessage); break;
+                }
+            }
+           
         }
 
         public static void ParseCourseInput(string input, ref List<Course> courses, int dashes, string topMessage, int selection)
@@ -46,6 +66,7 @@ namespace CL_GradesTracker_ProjectOne
                 if(parsedSelection <= 0 || parsedSelection > courses[selection].Evaluations.Count)
                 {
                     Error.PrintMessage("Incorrect input, try again..");
+                    Console.WriteLine();
                     HelperMethods.PromptUser("Enter a command: ");
                     input = HelperMethods.GetUserSelection();
                     ParseCourseInput(input, ref courses, dashes, topMessage, selection);
@@ -65,6 +86,12 @@ namespace CL_GradesTracker_ProjectOne
                         CourseMenu.Display(ref courses, dashes, topMessage, selection);
                         break;
 
+                    case "D":
+                        CrudMethods.DeleteCourse(ref courses, selection);
+                        Console.Clear();
+                        MainMenu.Display(ref courses, dashes, "Grades Summary");
+                        break;
+
                     case "X":
                         Console.Clear();
                         topMessage = "Grades Summary";
@@ -73,6 +100,8 @@ namespace CL_GradesTracker_ProjectOne
 
                     default:
                         Error.PrintMessage("Incorrect input, try again..");
+                        Console.WriteLine();
+                        HelperMethods.PromptUser("Enter a command: ");
                         string new_input = Console.ReadLine();
                         ParseCourseInput(new_input.ToUpper(), ref courses, dashes, topMessage, selection); break;
                 }
@@ -89,18 +118,19 @@ namespace CL_GradesTracker_ProjectOne
         }
 
         public static void ParseEvaluationInput(string input, ref List<Course> courses, int dashes, string topMessage, int courseSelection, int evaluationSelection)
-        { 
+        {       
             switch (input)
             {
                 case "D":
-                    DeleteEvaluation(ref courses, courseSelection, evaluationSelection);
+                    CrudMethods.DeleteEvaluation(ref courses, courseSelection, evaluationSelection);
                     Console.Clear();
                     CourseMenu.Display(ref courses, dashes, courses[courseSelection].Code, courseSelection);
                     break;
 
                 case "E":
+                    CrudMethods.EditEvaluation(ref courses, courseSelection, evaluationSelection);
                     Console.Clear();
-                    MainMenu.Display(ref courses, dashes, "Grades Summary");
+                    CourseMenu.Display(ref courses, dashes, courses[courseSelection].Code, courseSelection);
                     break;
 
                 case "X":
@@ -113,45 +143,11 @@ namespace CL_GradesTracker_ProjectOne
                     string new_input = Console.ReadLine();
                     ParseCourseInput(new_input.ToUpper(), ref courses, dashes, topMessage, courseSelection); break;
             }
-            
-
         }
 
-        static void DeleteEvaluation(ref List<Course> courses, int courseSelection, int evaluationSelection)
-        {
-            string input;
-            HelperMethods.PromptUser($"Delete { courses[courseSelection].Evaluations[evaluationSelection].Description }? (Y/N): ");
-            input = HelperMethods.GetUserSelection();
-            if(VerifyYesOrNo(input))
-            {
-                if(input == "Y")
-                {
-                    courses[courseSelection].Evaluations[evaluationSelection] = null;
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                Error.PrintMessage("Incorrect input, try again...");
-                DeleteEvaluation(ref courses, courseSelection, evaluationSelection);
-            }
-        }
+       
 
-        static bool VerifyYesOrNo(string input)
-        {
-            switch(input)
-            {
-                case "Y":
-                    return true;
-                case "N":
-                    return true;
-                default:
-                    return false;
-            }
-        }
+    
 
     }
 

@@ -9,8 +9,6 @@ namespace CL_GradesTracker_ProjectOne
         public static void Display(ref List<Course> courses, int dashes, string topMessage)
         {
             string input;
-            char c = '\0';
-            int selection = -1;
 
             DisplayTop(topMessage, dashes);
 
@@ -21,7 +19,7 @@ namespace CL_GradesTracker_ProjectOne
             HelperMethods.PromptUser("Enter a command: ");
             input = HelperMethods.GetUserSelection();
 
-            ParseUserInput(c, selection, input, ref courses, topMessage, dashes);
+            ParseMethods.ParseMainInput(input, ref courses, dashes, topMessage);
         }
 
         public static void ParseUserInput(char c, int selection, string input, ref List<Course> courses, string topMessage, int dashes)

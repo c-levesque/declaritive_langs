@@ -8,7 +8,6 @@ namespace CL_GradesTracker_ProjectOne
     {
         public static void PromptUser(string prompt)
         {
-            Console.WriteLine("");
             Console.Write(prompt);
         }
         public static string GetUserSelection()

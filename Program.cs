@@ -7,7 +7,7 @@ namespace CL_GradesTracker_ProjectOne
     class Program
     {
         static List<Course> courses = new List<Course>();
-        const int DASHES = 74;
+        const int DASHES = 90;
 
         static void Main(string[] args)
         {

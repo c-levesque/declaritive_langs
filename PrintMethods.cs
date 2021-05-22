@@ -8,16 +8,25 @@ namespace CL_GradesTracker_ProjectOne
     {
         public static void CreateMainBox(string display, int d)
         {
-
-            // main display
-            Console.WriteLine("\n" +
-                "\t\t\t~ GRADES TRACKING SYSTEM ~\n");
+            string intro = "~ GRADES TRACKING SYTEM ~ ";
 
             int display_string_length = display.Length;
+            int spaces = (d - display_string_length) / 2;
+
+
+            // main display
+            Console.WriteLine();
+            for (int x = 0; x < (spaces - (intro.Length / 4)); x++) // dynamically adjusts intro line
+            {
+                Console.Write(" ");
+            }
+            Console.Write(intro);
+            Console.WriteLine("\n");
+
 
             PrintChar("-", d);
 
-            int spaces = (d - display_string_length) / 2;
+          
 
             bool is_odd = false;
 
